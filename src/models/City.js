@@ -13,8 +13,7 @@ const City = sequelize.define('city', {
     },
     countryId: {
       type: DataTypes.STRING(2),
-      allowNull: false,
-      unique: true
+      allowNull: false
   },
 });
 
