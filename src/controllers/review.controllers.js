@@ -1,11 +1,13 @@
 const catchError = require("../utils/catchError");
 const Review = require("../models/Review");
+const User = require("../models/User");
 
 const getAll = catchError(async (req, res) => {
   const { hotelId, offset, perPage } = req.query;
   const where = {};
   if (hotelId) where.hotelId = hotelId;
   const results = await Review.findAll({
+    include: [User],
     where: where,
     offset: offset,
     limit: perPage
