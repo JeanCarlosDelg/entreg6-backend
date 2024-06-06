@@ -25,8 +25,8 @@ const User = sequelize.define('user', {
     },
     isVerified: {
         type: DataTypes.BOOLEAN,
-        // allowNull: false,
-        // defaultValue: false
+        allowNull: false,
+        defaultValue: false
     }
 });
 
