@@ -11,6 +11,7 @@ const getAll = catchError(async (req, res) => {
 });
 
 const create = catchError(async (req, res) => {
+  
   if (!req.file) return res.status(400).json({ message: "no hay imagen" });
   const { url } = await uploadToCloudinary(req.file);
   const result = await Image.create({
@@ -30,7 +31,7 @@ const getOne = catchError(async (req, res) => {
 const remove = catchError(async (req, res) => {
   const { id } = req.params;
   const image = await Image.findOne({ where: { id } });
-  if (!image) return res.status(404).json({ messge: "image not found" });
+  if (!image) return res.status(404).json({ message: "image not found" });
   await deleteFromCloudinary(image.url);
   await image.destroy();
   return res.sendStatus(204);

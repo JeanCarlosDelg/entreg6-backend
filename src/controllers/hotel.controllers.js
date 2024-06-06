@@ -31,7 +31,7 @@ const getAll = catchError(async (req, res) => {
     };
   });
   const hotelsWithAvg = await Promise.all(hotelsWithAvgPromises);
-  return res.json(results);
+  return res.json(hotelsWithAvg);
 });
 
 const create = catchError(async (req, res) => {

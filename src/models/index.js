@@ -1,5 +1,6 @@
 const Booking = require("./Booking");
 const City = require("./City");
+const EmailCode = require("./EmailCode");
 const Hotel = require("./Hotel");
 const Image = require("./Image");
 const Review = require("./Review");
@@ -24,3 +25,6 @@ Review.belongsTo(Hotel)
 
 User.hasMany(Review)
 Review.belongsTo(User)
+
+EmailCode.belongsTo(User)
+User.hasOne(EmailCode)

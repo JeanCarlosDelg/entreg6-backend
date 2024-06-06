@@ -1,4 +1,4 @@
-const { getAll, create, getOne, remove, update, login } = require('../controllers/user.controllers');
+const { getAll, create, getOne, remove, update, login, verifyCode, resetPassword, updatePassword } = require('../controllers/user.controllers');
 const express = require('express');
 const verifyJWT = require('../utils/verifyJWT');
 
@@ -10,6 +10,15 @@ userRouter.route('/')
 
 userRouter.route('/login')
     .post(login)
+
+userRouter.route('/reset_password')
+    .post(resetPassword)
+    
+userRouter.route('/verify/:code')
+    .get(verifyCode)
+    
+userRouter.route('/reset_password/:code')
+    .post(updatePassword)
 
 userRouter.route('/:id')
     .get(verifyJWT, getOne)
